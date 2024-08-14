@@ -26,14 +26,14 @@
         @forelse($personas as $persona)
             <div class="card border-e shadow-sm mt-4 mx-auto" style="width: 18rem"> 
                 @if($persona->image)
-                  <img src="/storage/{{ $persona->image }}" alt="{{ $persona->titulo }}" width="50" height="50"><img src="/storage/{{ $persona->image }}" alt="{{ $persona->titulo }}" width="285" height="200">
+                  <img src="/storage/{{ $persona->image }}" alt="{{ $persona->titulo }}" width="285" height="200">
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">
                        <a href="{{ route('personas.show',  $persona->nPerCodigo) }}">
                        {{ $persona->cPerNombre }} {{ $persona->cPerApellido }}</a>
                     </h5>
-                    <h6 class="card-subtitle">{{ $persona>created_at->format('d/m/Y')}}</h6>
+                    <h6 class="card-subtitle">{{ $persona->created_at->format('d/m/Y')}}</h6>
                     <p class="card-text text-truncate">{{ $persona->cPerDireccion }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <a href="{{ route('personas.show',  $persona->nPerCodigo) }}"

@@ -86,7 +86,8 @@ class PersonasController extends Controller
     public function edit(Persona $persona)
     {
         return view('editar',[
-            'persona'=>$persona
+            'persona'=>$persona,
+            'categories' => Category::pluck('name', 'id')
         ]);
         //
     }

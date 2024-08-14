@@ -14,10 +14,9 @@ class Persona extends Model
     // Nombre de la clave primaria
     protected $primaryKey = 'nPerCodigo';
     //protected $guarded=[];
-    protected $fillable = ['cPerApellido','cPerNombre','cPerDireccion','dPerFecNac','nPerEdad','nPerSueldo','cPerRnd','nPerEstado','created_at'];
+    // protected $fillable = ['cPerApellido','cPerNombre','cPerDireccion','dPerFecNac','nPerEdad','nPerSueldo','cPerRnd','nPerEstado','created_at'];
     
-    // Asegúrate de que la propiedad $timestamps esté habilitada
-    public $timestamps = true;
+    protected $guarded = [];
 
     public function category() {
         return $this->belongsTo(Category::class);
