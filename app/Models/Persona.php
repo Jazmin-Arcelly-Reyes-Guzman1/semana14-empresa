@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,5 +14,12 @@ class Persona extends Model
     // Nombre de la clave primaria
     protected $primaryKey = 'nPerCodigo';
     //protected $guarded=[];
-    protected $fillable = ['cPerApellido','cPerNombre','cPerDireccion','dPerFecNac','nPerEdad','nPerSueldo','cPerRnd','nPerEstado'];
+    protected $fillable = ['cPerApellido','cPerNombre','cPerDireccion','dPerFecNac','nPerEdad','nPerSueldo','cPerRnd','nPerEstado','created_at'];
+    
+    // Asegúrate de que la propiedad $timestamps esté habilitada
+    public $timestamps = true;
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

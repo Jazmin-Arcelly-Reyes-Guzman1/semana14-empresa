@@ -25,6 +25,10 @@ class CreatePersonaRequest extends FormRequest
         return [
             'cPerApellido' => 'required|string|max:50',
             'cPerNombre' => 'required|string|max:50',
+            'category_id' => [
+                'required',
+                'exists:categories,id'
+            ],
             'cPerDireccion' => 'required|string|max:100',
             'dPerFecNac' => 'required|date',
             'nPerEdad' => 'required|integer|min:0',
@@ -49,6 +53,7 @@ class CreatePersonaRequest extends FormRequest
         return [
             'cPerApellido.required' => 'El campo apellido es obligatorio.',
             'cPerNombre.required' => 'El campo nombre es obligatorio.',
+            'category_id.required' => 'La categoria es requerido',
             'cPerDireccion.required' => 'El campo dirección es obligatorio.',
             'dPerFecNac.required' => 'El campo fecha de nacimiento es obligatorio.',
             'dPerFecNac.date' => 'Se necesita un fecha de nacimiento para la persona.',

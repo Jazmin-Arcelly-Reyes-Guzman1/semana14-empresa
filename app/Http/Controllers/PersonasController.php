@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;#manual
 use Intervention\Image\Facades\Image;#manual
 use App\Events\PersonaSaved;#manual
 use App\Models\Persona;
+use App\Models\Category;
 use App\Http\Requests\CreatePersonaRequest;
 
 class PersonasController extends Controller
@@ -16,8 +17,11 @@ class PersonasController extends Controller
      */
     public function index()
     {
-        $personas = Persona::orderBy('nPerCodigo','asc')->paginate(3);
-        return view('personas',compact('personas'));
+        // $personas = Persona::orderBy('nPerCodigo','asc')->paginate(3);
+        // return view('personas',compact('personas'));
+        return view('personas', [
+            'personas' => Persona::with('category')->latest()->paginate(4)
+        ]);
         //
     }
 
@@ -28,7 +32,9 @@ class PersonasController extends Controller
     public function create()
     {
         return view('create',[
-            'persona'=>new Persona
+            'persona'=>new Persona,
+            'categories' => Category::pluck('name', 'id')
+
         ]);
         //
     }

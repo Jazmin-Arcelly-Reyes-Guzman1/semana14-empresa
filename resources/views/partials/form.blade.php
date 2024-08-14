@@ -7,6 +7,19 @@
     </div>
   </td>
 </tr>
+<tr>
+<th>Categoria</th>
+<td>
+    <select name="category_id" id="category_id">
+        <option value="">Seleccione</option>
+        @foreach($categories as $id => $name)
+            <option value="{{ $id }}"
+                @if($id == old('category_id', $persona->category_id)) selected @endif
+            >{{ $name }}</option>
+        @endforeach
+    </select>
+</td>
+</tr>
 <table class="table" style="font-size: 0.8em; background-color: white; width: 30%">
     <tr>
         <th>Apellido</th>
